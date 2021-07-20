@@ -1,0 +1,2 @@
+rootProject.name = "MusicApiMVVM"
+include ':app'

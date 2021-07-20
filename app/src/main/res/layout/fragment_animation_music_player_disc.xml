@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".ui.fragment.AnimationMusicPlayerDiscFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lav_music_disc"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="50dp"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/play_dvd_disk" />
+
+</LinearLayout>

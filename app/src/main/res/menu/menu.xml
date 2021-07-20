@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/rankFragment"
+        android:enabled="true"
+        android:icon="@drawable/baseline_signal_cellular_alt_24"
+        android:menuCategory="secondary"
+        android:title="Rank" />
+    <item
+        android:id="@+id/libraryFragment"
+        android:enabled="true"
+        android:icon="@drawable/baseline_library_music_24"
+        android:menuCategory="secondary"
+        android:title="Libary" />
+    <item
+        android:id="@+id/personFragment"
+        android:enabled="true"
+        android:icon="@drawable/baseline_person_24"
+        android:menuCategory="secondary"
+        android:title="Favorite" />
+
+</menu>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/rankFragment">
+
+    <fragment
+        android:id="@+id/rankFragment"
+        android:name="com.example.musicapimvvm.ui.fragment.RankFragment"
+        android:label="fragment_rank"
+        tools:layout="@layout/fragment_rank" />
+    <fragment
+        android:id="@+id/libraryFragment"
+        android:name="com.example.musicapimvvm.ui.fragment.LibraryFragment"
+        android:label="fragment_library"
+        tools:layout="@layout/fragment_library" />
+    <fragment
+        android:id="@+id/personFragment"
+        android:name="com.example.musicapimvvm.ui.fragment.PersonFragment"
+        android:label="fragment_person"
+        tools:layout="@layout/fragment_person" />
+</navigation>
