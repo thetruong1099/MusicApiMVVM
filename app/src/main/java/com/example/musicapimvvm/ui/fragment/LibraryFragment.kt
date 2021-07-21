@@ -32,7 +32,7 @@ class LibraryFragment : CustomBackStackFragment() {
     }
 
     private val listSongAdapter by lazy {
-        ListSongDbAdapter(onItemClick)
+        ListSongDbAdapter(requireContext(),onItemClick)
     }
 
     private val onItemClick: (song: Song) -> Unit = { song ->

@@ -1,16 +1,27 @@
 package com.example.musicapimvvm.ui.adapter
 
+import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.media.MediaMetadataRetriever
+import android.media.ThumbnailUtils
+import android.net.Uri
+import android.os.Build
+import android.provider.MediaStore
 import android.util.Size
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.musicapimvvm.R
 import com.example.musicapimvvm.model.Song
+import com.example.mydiary.util.getThumbnail
 import kotlinx.android.synthetic.main.recycler_view_audio_item.view.*
 import java.io.File
 
 class ListSongDbAdapter(
+    private val context: Context,
     private val onclick: (Song) -> Unit
 ) : RecyclerView.Adapter<ListSongDbAdapter.ViewHolder>() {
 
@@ -31,11 +42,7 @@ class ListSongDbAdapter(
 
             }
 
-            val thumbnail = android.media.ThumbnailUtils.createAudioThumbnail(
-                File(song.url),
-                Size(320, 320),
-                null
-            )
+            val thumbnail = getThumbnail(context, song.url)
 
             if (thumbnail == null) {
                 imgThumb.setImageResource(R.drawable.note_music)
@@ -71,9 +78,5 @@ class ListSongDbAdapter(
         notifyDataSetChanged()
     }
 
-    fun clearListSong() {
-        listSong.clear()
-        notifyDataSetChanged()
-    }
 
 }

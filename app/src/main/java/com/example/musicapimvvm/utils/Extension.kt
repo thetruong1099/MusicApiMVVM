@@ -1,11 +1,20 @@
 package com.example.mydiary.util
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.media.MediaMetadataRetriever
+import android.media.ThumbnailUtils
+import android.net.Uri
+import android.os.Build
+import android.util.Size
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavController
 import com.example.musicapimvvm.R
 import com.example.musicapimvvm.model.Song
 import com.example.musicapimvvm.model.api.SongApi
+import java.io.File
 
 fun NavController.popBackStackAllInstances(destination: Int, inclusive: Boolean): Boolean {
     var popped: Boolean
@@ -61,5 +70,28 @@ fun formatTime(time: Int): String {
         return totalNew
     } else {
         return totalOut
+    }
+}
+
+fun getThumbnail(context: Context, url: String): Bitmap {
+    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+        ThumbnailUtils.createAudioThumbnail(
+            File(url),
+            Size(320, 320),
+            null
+        )
+    } else {
+        val file = File(url)
+        val mmr = MediaMetadataRetriever()
+        mmr.setDataSource(context, Uri.fromFile(file))
+        val art: Bitmap
+        val bfo = BitmapFactory.Options()
+        val rawArt: ByteArray? = mmr.embeddedPicture
+        if (rawArt != null) {
+            art = BitmapFactory.decodeByteArray(rawArt, 0, rawArt.size, bfo)
+            art
+        } else {
+            BitmapFactory.decodeResource(context.resources, R.drawable.note_music)
+        }
     }
 }

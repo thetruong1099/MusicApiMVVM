@@ -15,6 +15,7 @@ import com.example.musicapimvvm.currentData.CurrentData
 import com.example.musicapimvvm.model.Song
 import com.example.musicapimvvm.utils.Status
 import com.example.musicapimvvm.viewModel.MusicViewModel
+import com.example.mydiary.util.getThumbnail
 import kotlinx.android.synthetic.main.fragment_info_song.*
 import java.io.File
 
@@ -70,11 +71,7 @@ class InfoSongFragment : Fragment() {
 
     private fun updateUIForOffline(song: Song) {
         try {
-            val thumbnail = android.media.ThumbnailUtils.createAudioThumbnail(
-                File(song.url),
-                Size(320, 320),
-                null
-            )
+            val thumbnail = getThumbnail(requireContext(), song.url)
             if (thumbnail == null) {
                 img_song.setImageResource(R.drawable.note_music)
             } else {
